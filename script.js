@@ -28,29 +28,44 @@ function renderTasks() {
 
 function createTaskItem(task, index) {
     const taskItem = document.createElement("li");
+    taskItem.className = "list-group-item";
+
+    const taskRow = document.createElement('div');
+    taskRow.className = 'row'
+
+    const taskCol = document.createElement('div');
+    taskCol.className = 'form-check text-start col-sm-8 col-md-9';
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = task.completed;
-    checkbox.className = "task-checkbox";
+    checkbox.className = "form-check-input task-checkbox mx-2";
     checkbox.addEventListener("change", function() {
         handleCheckboxChange(index);
     });
 
-    const taskTextSpan = document.createElement("span");
-    taskTextSpan.textContent = task.text;
+    const taskText = document.createElement("label");
+    taskText.className = 'form-check-label ';
+    taskText.textContent = task.text;
+
+    taskCol.appendChild(checkbox);
+    taskCol.appendChild(taskText);
+
+    const taskAction = document.createElement('div');
+    taskAction.className = 'col-sm-4  col-md-3 d-grid';
 
     const deleteButton = document.createElement("button");
-    deleteButton.className = "delete-button";
+    deleteButton.className = "delete-button btn btn-danger";
     deleteButton.textContent = "Delete";
     deleteButton.addEventListener("click", function() {
         handleDeleteButtonClick(index);
     });
+    taskAction.appendChild(deleteButton);
 
-    taskItem.appendChild(checkbox);
-    taskItem.appendChild(taskTextSpan);
-    taskItem.appendChild(deleteButton);
+    taskRow.appendChild(taskCol);
+    taskRow.appendChild(taskAction);
 
+    taskItem.appendChild(taskRow);
     return taskItem;
 }
 

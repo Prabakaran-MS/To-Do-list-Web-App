@@ -3,7 +3,7 @@
 This web application provides a convenient way to manage your tasks. You can easily add, complete, and delete tasks to stay organized and productive.
 
 ## Output
-![output screenshor](./screenshot.png)
+![output screenshor](image.png)
 
 ## Features
 
